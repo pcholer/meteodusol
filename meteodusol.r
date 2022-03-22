@@ -83,5 +83,5 @@ for (i in 1:length(FILES.RAW)){
 
 # sauvegarde des fichiers
 setwd(DIR.OUT)
-write.csv(md,paste0(DOY,"-pne-metadata-temp-soil.csv"),row.names=F,quote=F)
-write.csv(data,paste0(DOY,"-pne-data-temp-soil.csv"),row.names=F,quote=F)
+write.csv(md,paste(DOY,dataset,"metadata-temp-soil.csv",sep="-"),row.names=F,quote=F)
+write.csv(data,paste(DOY,dataset,"data-temp-soil.csv",sep="-"),row.names=F,quote=F)

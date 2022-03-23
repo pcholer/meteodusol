@@ -1,6 +1,6 @@
 # 
 #           script meteodusol.r
-#           version 20220322
+#           version 20220323
 #           Philippe Choler
 #
 
@@ -18,17 +18,19 @@
 
 # IMPORTANT : Paramètres à ajuster par chaque utilisateur
 
-# a. DIR.CSV = le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
-# DIR.CSV    <- "./CSV"
+# You need first to set working directory (WD) to this file location
+# setwd("WD")
 
+# a. DIR.CSV le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
+DIR.CSV    <- "./CSV/"
 # b. mysite = le chemin d'accès au fichier mysite
-# mysite     <- "./mysite.csv"
+mysite     <- "./mysite.csv"
 
 # c. dataset  = le nom du jeu de données
-# dataset    <- "pne"   
+dataset    <- "PNE"   
 
-# d. DIR.EXPORT = le chemin du répertoire contenant les fichiers de sortie
-# DIR.EXPORT  <- "./EXPORT"
+# d. DIR.OUT = le chemin du répertoire contenant les fichiers de sortie
+DIR.EXPORT  <- "./EXPORT/"
 
 
 # vérification des fichiers d'entrée
@@ -36,7 +38,7 @@ FILES.CSV  <- list.files(DIR.CSV,pattern=".csv",full=T)
 FILES.CSVs <- list.files(DIR.CSV,pattern=".csv",full=F)
 NAMES      <- unlist(lapply(strsplit(FILES.CSVs,"_"),function(x) x[1]))
 
-SITE           <- read.csv(mysite,sep=";",stringsAsFactors = F,skip=1)
+SITE           <- read.csv(mysite,sep=";",stringsAsFactors = F)
 colnames(SITE) <- c("SourceID","X_WGS84","Y_WGS84") # renomme les colonnes
 
 # prepare data and metadata
@@ -65,7 +67,7 @@ for (i in 1:length(FILES.CSV)){
     sensor_type   = "hobo",
     date_start    = DAY[1],
     date_end      = DAY[NL],
-    subdataset    = "PNE",
+    subdataset    = dataset,
     sourceID      = sourceID
   )
   md <- rbind(md,TMPmd)
@@ -77,10 +79,8 @@ for (i in 1:length(FILES.CSV)){
     temperature   = round(TS[,2],1)
   )
   data <- rbind(data,TMPdata)
-  
-}
+} # end of CSV files
 
 # sauvegarde des fichiers
 write.csv(md,paste0(DIR.EXPORT,DOY,"-",dataset,"-metadata-temp-soil.csv"),row.names=F,quote=F)
 write.csv(data,paste0(DIR.EXPORT,DOY,"-",dataset,"-data-temp-soil.csv"),row.names=F,quote=F)
-

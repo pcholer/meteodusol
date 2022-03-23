@@ -8,9 +8,9 @@
 # Ce script génère deux fichiers csv contenant (1) les métadonnées et (2) les données de température du sol pour leur bancarisation dans OSUG-DC dans le cadre du projet climaplant.
 
 # Pré-requis
-# 1. un répertoire (DIR.RAW) contenant les fichiers export des enregistreurs Hobo selon un format défini (nom du fichier et structure -> voir example)
+# 1. un répertoire (DIR.CSV) contenant les fichiers export des enregistreurs Hobo selon un format défini (nom du fichier et structure -> voir example)
 
-# 2. un fichier csv (mysite) contenant les attributs des sites 
+# 2. un fichier contenant les attributs des sites (mysite.csv)
 #  SourceID = nom du site attribué par le fournisseur de données
 #  X_WGS84  = longitude en degrés décimaux
 #  Y_WGS84  = latitude en degrés décimaux
@@ -18,27 +18,26 @@
 
 # IMPORTANT : Paramètres à ajuster par chaque utilisateur
 
-# a. DIR.RAW le chemin du répertoire contenant les fichiers export
-# DIR.RAW    <- "~/CLIMATO/DATA/PNE/CLOTILDE/"
+# a. DIR.RAW le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
+# DIR.CSV    <- "./CSV"
 
 # b. mysite = le chemin d'accès au fichier mysite
-# mysite     <- "~/CLIMATO/DATA/PNE/SoilTemp_data submission_FR_CS_2020-10-26.csv"
+# mysite     <- "./mysite.csv"
 
 # c. dataset  = le nom du jeu de données
-# dataset  <- "pne"   
+# dataset    <- "pne"   
 
 # d. DIR.OUT = le chemin du répertoire contenant les fichiers de sortie
-# DIR.OUT  <- "~/CLIMATO/DATA/OSUG_DC/FILES/"
+# DIR.EXPORT  <- "./EXPORT"
 
 
 # vérification des fichiers d'entrée
-FILES.RAW  <- list.files(DIR.RAW,pattern=".csv",full=T)
-FILES.RAWs <- list.files(DIR.RAW,pattern=".csv",full=F)
-NAMES      <- unlist(lapply(strsplit(FILES.RAWs,"_"),function(x) x[1]))
+FILES.RAW  <- list.files(DIR.CSV,pattern=".csv",full=T)
+FILES.CSVs <- list.files(DIR.CSV,pattern=".csv",full=F)
+NAMES      <- unlist(lapply(strsplit(FILES.CSVs,"_"),function(x) x[1]))
 
-SITE       <- read.csv(mysite,sep=";",stringsAsFactors = F,skip=1)[,1:3]
-colnames(SITE) <- c("SourceID","X_WGS84","Y_WGS84")
-SITE$SourceID  <- gsub("FR_CS_","FR-",SITE$SourceID)
+SITE           <- read.csv(mysite,sep=";",stringsAsFactors = F,skip=1)
+colnames(SITE) <- c("SourceID","X_WGS84","Y_WGS84") # renomme les colonnes
 
 # prepare data and metadata
 md         <- NULL

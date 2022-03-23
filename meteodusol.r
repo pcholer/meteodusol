@@ -18,7 +18,7 @@
 
 # IMPORTANT : Paramètres à ajuster par chaque utilisateur
 
-# a. DIR.RAW le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
+# a. DIR.CSV = le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
 # DIR.CSV    <- "./CSV"
 
 # b. mysite = le chemin d'accès au fichier mysite
@@ -27,12 +27,12 @@
 # c. dataset  = le nom du jeu de données
 # dataset    <- "pne"   
 
-# d. DIR.OUT = le chemin du répertoire contenant les fichiers de sortie
+# d. DIR.EXPORT = le chemin du répertoire contenant les fichiers de sortie
 # DIR.EXPORT  <- "./EXPORT"
 
 
 # vérification des fichiers d'entrée
-FILES.RAW  <- list.files(DIR.CSV,pattern=".csv",full=T)
+FILES.CSV  <- list.files(DIR.CSV,pattern=".csv",full=T)
 FILES.CSVs <- list.files(DIR.CSV,pattern=".csv",full=F)
 NAMES      <- unlist(lapply(strsplit(FILES.CSVs,"_"),function(x) x[1]))
 
@@ -46,9 +46,9 @@ DOY        <- gsub("-","",Sys.Date())   # date
 set.seed(1967)
 
 # import files and produce data and metadata
-for (i in 1:length(FILES.RAW)){
+for (i in 1:length(FILES.CSV)){
   print(i)
-  TS        <- read.csv(FILES.RAW[i])[,1:2]
+  TS        <- read.csv(FILES.CSV[i])[,1:2]
   TS        <- TS[complete.cases(TS),]
   TIME      <- as.POSIXct(TS[,1],format="%Y-%m-%d %H:%M:%S",tz="GMT")
   DAY       <- as.Date(TIME)
@@ -81,6 +81,6 @@ for (i in 1:length(FILES.RAW)){
 }
 
 # sauvegarde des fichiers
-setwd(DIR.OUT)
-write.csv(md,paste(DOY,dataset,"metadata-temp-soil.csv",sep="-"),row.names=F,quote=F)
-write.csv(data,paste(DOY,dataset,"data-temp-soil.csv",sep="-"),row.names=F,quote=F)
+write.csv(md,paste0(DIR.EXPORT,DOY,"-",dataset,"-metadata-temp-soil.csv"),row.names=F,quote=F)
+write.csv(data,paste0(DIR.EXPORT,DOY,"-",dataset,"-data-temp-soil.csv"),row.names=F,quote=F)
+

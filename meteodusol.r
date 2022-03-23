@@ -8,12 +8,16 @@
 # Ce script génère deux fichiers csv contenant (1) les métadonnées et (2) les données de température du sol pour leur bancarisation dans OSUG-DC dans le cadre du projet climaplant.
 
 # Pré-requis
-# 1. un répertoire (DIR.CSV) contenant les fichiers export des enregistreurs Hobo selon un format défini (nom du fichier et structure -> voir example)
-
-# 2. un fichier contenant les attributs des sites (mysite.csv)
+# 1. un fichier (mysite.csv) contenant les attributs des sites dans trois colonnes. le séparateur est ;
 #  SourceID = nom du site attribué par le fournisseur de données
 #  X_WGS84  = longitude en degrés décimaux
 #  Y_WGS84  = latitude en degrés décimaux
+
+# 2. un répertoire (DIR.CSV) contenant les fichiers de température des enregistreurs Hobo
+# le nom des fichiers est du type "sourceID_xxxxx.csv"
+# colonne 1 : DATA HEURE GMT+00:00" (par exemple 2017-05-18 11:00:00)
+# colonne 2 : température en °C. (par exemple 10.2 et non pas 10,2)
+# le séparateur de colonnes est ,
 
 
 # IMPORTANT : Paramètres à ajuster par chaque utilisateur

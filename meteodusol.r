@@ -8,7 +8,7 @@
 # Ce script génère deux fichiers csv contenant (1) les métadonnées et (2) les données de température du sol pour leur bancarisation dans OSUG-DC dans le cadre du projet climaplant.
 
 # Pré-requis
-# 1. un fichier (mysite.csv) contenant les attributs des sites dans trois colonnes. le séparateur est ;
+# 1. un fichier (mysite_hobo.csv) contenant les attributs des sites dans trois colonnes. le séparateur est ;
 #  SourceID = nom du site attribué par le fournisseur de données
 #  X_WGS84  = longitude en degrés décimaux
 #  Y_WGS84  = latitude en degrés décimaux

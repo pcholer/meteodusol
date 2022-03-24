@@ -1,5 +1,5 @@
 # 
-#           script meteodusol_eau.r
+#           script meteodusol_tomst.r
 #           version 20220323
 #           Philippe Choler
 #
@@ -10,7 +10,7 @@
 # Les mesures sont réalisées avec les TOMST TMS
 
 # Pré-requis
-# 1. un fichier contenant les attributs des sites (mysite.csv)
+# 1. un fichier contenant les attributs des sites (mysite_tomst.csv)
 #  SourceID = nom du site attribué par le fournisseur de données
 #  X_WGS84  = longitude en degrés décimaux
 #  Y_WGS84  = latitude en degrés décimaux
@@ -33,15 +33,15 @@
 setwd("WD")
 
 # a. DIR.CSV le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
-DIR.CSV    <- "./CSV/"
+DIR.CSV    <- "./CSV_TOMST/"
 # b. mysite = le chemin d'accès au fichier mysite
-mysite     <- "./mysite.csv"
+mysite     <- "./mysite_tomst.csv"
 
 # c. dataset  = le nom du jeu de données
 dataset    <- "bioclim"   
 
 # d. DIR.OUT = le chemin du répertoire contenant les fichiers de sortie
-DIR.EXPORT  <- "./EXPORT/"
+DIR.EXPORT  <- "./EXPORT_TOMST/"
 
 # vérification des fichiers d'entrée
 FILES.CSV  <- list.files(DIR.CSV,pattern=".csv",full=T)

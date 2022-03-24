@@ -28,7 +28,7 @@
 # a. DIR.CSV le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
 DIR.CSV    <- "./CSV/"
 # b. mysite = le chemin d'accès au fichier mysite
-mysite     <- "./mysite.csv"
+mysite     <- "./mysite_hobo.csv"
 
 # c. dataset  = le nom du jeu de données
 dataset    <- "PNE"   

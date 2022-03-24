@@ -1,5 +1,5 @@
 # 
-#           script meteodusol.r
+#           script meteodusol_temp.r
 #           version 20220323
 #           Philippe Choler
 #

@@ -1,5 +1,5 @@
 # 
-#           script meteodusol_temp.r
+#           script meteodusol_hobo.r
 #           version 20220323
 #           Philippe Choler
 #
@@ -26,7 +26,7 @@
 # setwd("WD")
 
 # a. DIR.CSV le chemin du répertoire contenant les fichiers csv des enregistreurs Hobo
-DIR.CSV    <- "./CSV/"
+DIR.CSV    <- "./CSV_HOBO/"
 # b. mysite = le chemin d'accès au fichier mysite
 mysite     <- "./mysite_hobo.csv"
 
@@ -34,7 +34,7 @@ mysite     <- "./mysite_hobo.csv"
 dataset    <- "PNE"   
 
 # d. DIR.OUT = le chemin du répertoire contenant les fichiers de sortie
-DIR.EXPORT  <- "./EXPORT/"
+DIR.EXPORT  <- "./EXPORT_HOBO/"
 
 
 # vérification des fichiers d'entrée

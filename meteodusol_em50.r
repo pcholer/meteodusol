@@ -9,18 +9,6 @@
 
 # Les mesures sont rÃ©alisÃ©es avec les enresgistreurs EM50
 
-tmp     <- list.files("C:/Users/cholerp/Documents/CLIMATO/DATA/DATA_ECH2O/PNE_CHAILLOL")
-tmp_mod <- tmp
-for (i in 1:length(tmp)){
-  NAME  <- substr(tmp[i],1,17)
-  LAST  <- substr(tmp[i],18,nchar(tmp[i]))
-  NAME2 <- gsub("_","-",NAME)
-  auth <- substr(NAME2,4,6)
-  NAME3 <- paste0(gsub(auth,"",NAME2),"_",substr(auth,1,2))
-  tmp_mod[i] <-paste0(NAME3,LAST) 
-}
-write.table(tmp_mod,"newnames.txt",quote=F,row.names=F)
-
 # PrÃ©-requis
 # 1. un fichier contenant les attributs des sites (mysite_EM50.csv)
 #  SourceID = nom du site attribuÃ© par le fournisseur de donnÃ©es

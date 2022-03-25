@@ -36,6 +36,9 @@ dataset    <- "PNE"
 # d. DIR.OUT = le chemin du répertoire contenant les fichiers de sortie
 DIR.EXPORT  <- "./EXPORT_HOBO/"
 
+# e. initialisation du lot pour incrÃ©mentation
+INIT <- 1
+
 
 # vérification des fichiers d'entrée
 FILES.CSV  <- list.files(DIR.CSV,pattern=".csv",full=T)
@@ -65,6 +68,7 @@ for (i in 1:length(FILES.CSV)){
   
   # metadata
   TMPmd <- data.frame(
+    INCREMENT     = paste0(dataset,INIT+i-1),
     ID            = ID,
     X             = round(META$"X_WGS84",5),
     Y             = round(META$"Y_WGS84",5),
@@ -78,6 +82,7 @@ for (i in 1:length(FILES.CSV)){
   
   # data
   TMPdata <- data.frame(
+    INCREMENT     = paste0(dataset,INIT+i-1),
     ID            = ID,
     date_time     = format(TIME,"%Y-%m-%d %H:%M"),
     temperature   = round(TS[,2],1)

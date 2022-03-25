@@ -49,7 +49,7 @@ colnames(SITE) <- c("SourceID","X_WGS84","Y_WGS84") # renomme les colonnes
 md         <- NULL
 data       <- NULL
 DOY        <- gsub("-","",Sys.Date())   # date
-set.seed(1967)
+set.seed(1967) # attention : changer la date quand on change de lot de données ou de type de capteur pour éviter de générer des ID doublons 
 
 # import files and produce data and metadata
 for (i in 1:length(FILES.CSV)){

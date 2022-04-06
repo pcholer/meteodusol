@@ -10,21 +10,21 @@
 # Les mesures sont rÃ©alisÃ©es avec les enresgistreurs EM50
 
 # PrÃ©-requis
-# 1. un fichier contenant les attributs des sites (mysite_EM50.csv)
+# 1. un fichier contenant les attributs des sites (mysite_EM50.csv). le separateur est ;
 #  SourceID = nom du site attribuÃ© par le fournisseur de donnÃ©es
 #  X_WGS84  = longitude en degrÃ©s dÃ©cimaux
 #  Y_WGS84  = latitude en degrÃ©s dÃ©cimaux
 #  loggerID   = numÃ©ro de sÃ©rie de l'enregistreur
 
 
-# 2. un rÃ©pertoire (DIR.CSV) contenant les fichiers export des enregistreurs TOMST-TMS 
+# 2. un rÃ©pertoire (DIR.CSV) contenant les fichiers export des enregistreurs EM50
 # le nom des fichiers est du type "loggerID_xxxxx.csv", le loggerID ne doit pas contenir le caractÃ¨re "_"
 # colonne 1 : numÃ©ro de ligne
 # colonne 2 : DATA HEURE GMT+00:00" (par exemple 2017-05-18 11:00:00)
 # colonne 4 Ã  6 : tempÃ©rature en Â°C. (par exemple 10,2 et non pas 10.2)
 # colonne 7 : valeurs brutes (raw values) de teneur en eau
 # ...
-# le sÃ©parateur de colonnes est ;
+# le sÃ©parateur de colonnes est ,
 
 # IMPORTANT : ParamÃ¨tres Ã  ajuster par chaque utilisateur
 

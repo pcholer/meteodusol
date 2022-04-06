@@ -21,7 +21,7 @@
 # le nom des fichiers est du type "data_loggerID_xxxxx.csv"
 # colonne 1 : numéro de ligne
 # colonne 2 : DATA HEURE GMT+00:00" (par exemple 2017-05-18 11:00:00)
-# colonne 4 à 6 : température en °C. (par exemple 10,2 et non pas 10.2)
+# colonne 4 à 6 : température en °C. (par exemple 10.2 et non pas 10,2)
 # colonne 7 : valeurs brutes (raw values) de teneur en eau
 #...
 # le séparateur de colonnes est ;
